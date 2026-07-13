@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+
+.DS_Store
+
+logs/*
+!logs/.gitkeep
+
+results/*
+!results/.gitkeep
+!results/results-template.md
+
+vendor/
