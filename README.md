@@ -1,17 +1,19 @@
-# Day 1 CUDA Checkpoint Experiment
+# CUDA Checkpoint Validation
 
-Minimal repository for evaluating NVIDIA `cuda-checkpoint` inside Daytona GPU sandboxes.
+Repository for exercising NVIDIA `cuda-checkpoint` inside Daytona GPU sandboxes.
 
-This repo is intentionally small and manual-first. Day 1 focuses on:
+The workflow in this repo is intentionally manual and staged. The validation sequence exercised:
 
-1. Collecting the sandbox environment.
-2. Verifying prerequisite tooling.
-3. Inspecting NVIDIA's `cuda-checkpoint` repository.
-4. Checking CRIU readiness separately from CUDA checkpoint support.
-5. Running NVIDIA's minimal counter example.
-6. Trying a simple single-process PyTorch CUDA workload.
+1. Sandbox environment collection.
+2. Dependency and prerequisite inspection.
+3. Inspection of NVIDIA's upstream `cuda-checkpoint` repository.
+4. CRIU prerequisite checks, kept separate from CUDA checkpoint behavior.
+5. NVIDIA's minimal counter workload.
+6. A single-process PyTorch CUDA workload.
+7. Driver-feature demo runs tied to the upstream repository examples.
+8. RTX 5090 vs H100 comparison reporting.
 
-Do not assume driver portability, CRIU availability, or root access.
+No benchmark values or test outcomes are recorded in this README.
 
 ## Suggested order
 
@@ -21,4 +23,5 @@ Do not assume driver portability, CRIU availability, or root access.
 4. Clone NVIDIA's repository into `vendor/cuda-checkpoint` or set `CUDA_CHECKPOINT_REPO`.
 5. Run `scripts/run_criu_check.sh`.
 6. Run `scripts/run_counter_test.sh`.
-7. Run `workloads/pytorch_counter.py` for the next manual checkpoint attempt.
+7. Run `workloads/pytorch_counter.py` when ready for the PyTorch checkpoint workflow.
+8. Use the Daytona RTX 5090 helper scripts when running the reduced GPU comparison matrix.
