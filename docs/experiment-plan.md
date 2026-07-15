@@ -45,6 +45,20 @@ Based on the upstream README:
    - toggle CUDA state back to running,
    - send another packet and observe `102`.
 
+### Daytona SDK note
+
+The project now targets Daytona SDK `0.197.0`, which exposes deterministic GPU selection via:
+
+```python
+from daytona import GpuType, Resources
+
+resources = Resources(gpu=1, gpu_type=[GpuType.RTX_5090])
+```
+
+The helper script [`scripts/daytona_rtx5090_probe.py`](../scripts/daytona_rtx5090_probe.py) builds the corresponding
+`CreateSandboxFromImageParams` payload with the preferred CUDA image and ephemeral lifecycle settings, but does not
+create a sandbox unless invoked explicitly with `--create`.
+
 ### Current local environment note
 
 The first baseline collection in this workspace was run on a local macOS host, not inside a Daytona GPU sandbox. That host did not expose NVIDIA devices, CUDA tooling, CRIU, or `/proc` in the Linux layout expected by the experiment. Use the generated scripts inside the actual Daytona GPU sandbox for meaningful results.
